@@ -1,0 +1,310 @@
+/* ============================================================
+   PAGE: Simulator — Estilos específicos da página
+   Herda tokens de /src/index.css
+   ============================================================ */
+
+/* ─── Hero ─── */
+.simulator-main {
+  padding-top: 80px; /* offset navbar fixa */
+}
+
+.sim-hero-section {
+  padding: 80px 0 60px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sim-hero-title {
+  margin: 12px 0 20px;
+}
+
+.sim-hero-title .accent-text {
+  color: var(--color-accent);
+}
+
+.sim-hero-desc {
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.sim-hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sim-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: var(--bg-sage);
+  border: 1px solid var(--color-border);
+  padding: 6px 14px;
+  border-radius: var(--border-radius-sm);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Calculator Section ─── */
+.sim-calculator-section {
+  padding: 80px 0 100px;
+  background-color: var(--bg-primary);
+}
+
+/* Reutiliza as mesmas classes do QuantitySpreadsheet.css (já globais via component import) */
+/* Os estilos abaixo complementam / sobrescrevem onde necessário */
+
+.calculator-wrapper {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.calculator-inputs {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: var(--shadow-medium);
+}
+
+.calc-title {
+  color: var(--text-primary);
+}
+
+/* Grupos de input herdados do QuantitySpreadsheet.css */
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.input-labels { display: flex; justify-content: space-between; align-items: center; }
+.input-labels label { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+.input-value { font-size: 0.95rem; font-weight: 700; color: var(--color-accent); }
+
+.range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--bg-secondary);
+  outline: none;
+  border: 1px solid var(--color-border);
+}
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: var(--transition-fast);
+}
+.range-slider::-webkit-slider-thumb:hover {
+  background: var(--color-accent-light);
+  transform: scale(1.1);
+}
+
+.range-bounds {
+  font-family: var(--font-technical);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  text-align: right;
+  margin-top: 2px;
+}
+
+.select-label { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+
+.technical-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--bg-primary);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.technical-select:focus {
+  border-color: var(--color-border-focus);
+  background-color: var(--bg-card);
+}
+
+.reset-calc-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: 6px;
+  transition: var(--transition-fast);
+}
+.reset-calc-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* Planilha de saída */
+.spreadsheet-grid-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.spreadsheet-top-bar {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 40px;
+}
+
+.sheet-tab {
+  background-color: var(--bg-card);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent);
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: -1px;
+}
+
+.sheet-status {
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  background-color: var(--bg-sage);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.sheet-table { width: 100%; }
+
+.sheet-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 60px 130px;
+  border-bottom: 1px solid var(--bg-secondary);
+  align-items: center;
+  min-height: 48px;
+}
+
+.sheet-col {
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.cell-idx {
+  border-right: 1px solid var(--color-border);
+  background-color: var(--bg-secondary);
+  color: var(--text-light);
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  justify-content: center;
+}
+
+.cell-desc { color: var(--text-primary); font-weight: 500; }
+.cell-unit { color: var(--text-secondary); justify-content: center; border-left: 1px solid var(--bg-secondary); border-right: 1px solid var(--bg-secondary); }
+.cell-qty { justify-content: flex-end; font-weight: 600; color: var(--text-primary); }
+
+.sheet-row.header {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+  min-height: 36px;
+}
+.sheet-row.header .sheet-col {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.sheet-row.total-row {
+  background-color: var(--bg-sage);
+  border-top: 2px double var(--color-border);
+}
+.sheet-row.total-row .cell-desc { font-weight: 700; color: var(--color-accent); }
+.sheet-row.total-row .cell-qty  { font-weight: 700; color: var(--color-accent); }
+
+.sheet-summary-badge {
+  margin: 30px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  padding: 20px 24px;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.summary-left { display: flex; align-items: center; gap: 16px; }
+.summary-icon { color: var(--color-accent); }
+.summary-title { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+.summary-desc  { display: block; font-size: 0.8rem; color: var(--text-secondary); }
+.summary-right { font-size: 1.35rem; font-weight: 800; color: var(--color-accent); }
+
+.spreadsheet-note { padding: 0 30px 30px 30px; }
+.spreadsheet-note p { font-size: 0.75rem; line-height: 1.5; color: var(--text-light); }
+
+/* CTA Block */
+.sim-cta-block {
+  margin-top: 60px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-subtle);
+}
+
+.sim-cta-text h3 { margin-bottom: 8px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .calculator-wrapper { grid-template-columns: 1fr; gap: 30px; }
+  .sim-cta-block { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .calculator-inputs { padding: 24px; }
+  .spreadsheet-note, .sheet-summary-badge { margin: 16px; padding: 16px; }
+  .sheet-row { grid-template-columns: 30px 1.5fr 0.7fr 1.1fr; }
+  .sheet-col { padding: 8px; font-size: 0.8rem; }
+}

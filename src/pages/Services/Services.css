@@ -1,0 +1,360 @@
+/* ============================================================
+   PAGE: Services — Estilos Específicos da Página
+   ============================================================ */
+
+.services-page-main {
+  padding-bottom: 100px;
+}
+
+/* ─── Hero ─── */
+.services-hero-section {
+  padding: 120px 0 60px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.services-hero-desc {
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+/* ─── Hub Interativo ─── */
+.services-hub-interactive-section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.services-page-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Sidebar Menu */
+.services-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar-header-title {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+.services-selectors-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-card-selector {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  text-align: left;
+  padding: 0;
+  width: 100%;
+}
+
+.service-card-selector:hover {
+  transform: translateX(4px);
+  border-color: var(--text-light);
+  box-shadow: var(--shadow-subtle);
+}
+
+.service-card-selector.active {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-medium);
+  background-color: var(--bg-card);
+}
+
+.selector-num-box {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--color-border);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-light);
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.service-card-selector.active .selector-num-box {
+  background-color: var(--bg-sage);
+  color: var(--color-accent);
+  border-right-color: var(--color-accent);
+}
+
+.selector-text-box {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.selector-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.selector-desc-short {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+/* Detalhes do Serviço */
+.services-detail-display-pane {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: 50px;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.pane-header-strip {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pane-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--bg-sage);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pane-step-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.pane-service-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.pane-service-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.pane-checklist-box {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 30px;
+}
+
+.checklist-heading {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  font-weight: 700;
+  border-bottom: 1px dashed var(--color-border);
+  padding-bottom: 10px;
+}
+
+.checklist-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.checklist-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.checklist-item span {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Ficha Técnica */
+.service-tech-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.spec-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 20px;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.spec-card-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* Action Bar */
+.pane-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  padding-top: 30px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.action-tag {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.pane-cta-btn {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Faixa de Garantia Técnica ─── */
+.services-guarantee-strip {
+  padding: 80px 0;
+  background-color: var(--bg-secondary);
+}
+
+.guarantee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.guarantee-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guarantee-icon {
+  color: var(--color-accent);
+}
+
+.guarantee-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.guarantee-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Responsividade ─── */
+@media (max-width: 1024px) {
+  .services-page-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .services-sidebar-menu {
+    position: static;
+  }
+
+  .services-selectors-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .guarantee-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-selectors-container {
+    grid-template-columns: 1fr;
+  }
+
+  .services-detail-display-pane {
+    padding: 30px 20px;
+  }
+
+  .service-tech-spec-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pane-header-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pane-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pane-cta-btn {
+    width: 100%;
+  }
+}

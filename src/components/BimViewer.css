@@ -1,0 +1,312 @@
+.bim-section {
+  padding: 100px 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bim-header {
+  margin-bottom: 60px;
+  max-width: 800px;
+}
+
+.bim-subtitle {
+  margin-top: 16px;
+}
+
+.bim-viewer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* 3D Canvas Box */
+.bim-canvas-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  min-height: 420px;
+  cursor: grab;
+}
+
+.bim-canvas-container:active {
+  cursor: grabbing;
+}
+
+.bim-canvas {
+  width: 100%;
+  max-width: 540px;
+  height: 400px;
+  display: block;
+}
+
+.bim-canvas-overlay-guide {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: var(--font-technical);
+  font-size: 0.7rem;
+  background-color: rgba(21, 24, 22, 0.05);
+  padding: 6px 12px;
+  border-radius: var(--border-radius-sm);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  font-weight: 500;
+  border: 1px solid rgba(21, 24, 22, 0.03);
+}
+
+.coordinates-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-technical);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  pointer-events: none;
+}
+
+.coord-axis {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.coord-axis::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 2px;
+}
+
+.axis-x::before { background-color: #C94C4C; }
+.axis-y::before { background-color: #376C50; }
+.axis-z::before { background-color: #1A3F7A; }
+
+/* Control Panel */
+.bim-controls-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-medium);
+}
+
+.control-panel-title {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.control-panel-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.layer-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.layer-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  background-color: var(--bg-primary);
+  transition: var(--transition-smooth);
+}
+
+.layer-toggle-row:hover {
+  border-color: var(--text-primary);
+}
+
+.layer-toggle-row.active {
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-subtle);
+}
+
+.layer-info-side {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.layer-indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.layer-indicator-dot.fundações { background-color: #8E9690; }
+.layer-indicator-dot.pilares { background-color: #006e80; }
+.layer-indicator-dot.lajes { background-color: #376C50; }
+.layer-indicator-dot.instalações { background-color: #D45A25; }
+
+.layer-name {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.toggle-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-label {
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.switch-element {
+  width: 40px;
+  height: 20px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.layer-toggle-row.active .switch-element {
+  background-color: var(--bg-sage);
+  border-color: var(--color-accent);
+}
+
+.switch-knob {
+  width: 14px;
+  height: 14px;
+  background-color: var(--text-light);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: var(--transition-fast);
+}
+
+.switch-knob.checked {
+  left: 22px;
+  background-color: var(--color-accent);
+}
+
+/* Specifications Table */
+.live-specifications {
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+}
+
+.specs-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.specs-table {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+}
+
+.specs-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1.4fr 0.8fr;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.specs-row:last-child {
+  border-bottom: none;
+}
+
+.specs-row.header {
+  background-color: var(--bg-secondary);
+  font-family: var(--font-technical);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.spec-name {
+  font-family: var(--font-technical);
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.75rem;
+}
+
+.spec-val {
+  color: var(--text-secondary);
+}
+
+.spec-val.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 8px;
+}
+
+.spec-safety {
+  color: var(--color-accent);
+  font-weight: 500;
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .bim-viewer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bim-controls-panel {
+    padding: 20px;
+  }
+  
+  .specs-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  
+  .specs-row.header {
+    display: none;
+  }
+  
+  .spec-safety {
+    text-align: left;
+    grid-column: span 2;
+    border-top: 1px dashed var(--color-border);
+    padding-top: 4px;
+    margin-top: 4px;
+  }
+}

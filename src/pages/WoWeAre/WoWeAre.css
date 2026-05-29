@@ -1,0 +1,302 @@
+/* ============================================================
+   PAGE: WoWeAre — Estilos Específicos da Página
+   ============================================================ */
+
+.woweare-page-main {
+  padding-bottom: 100px;
+}
+
+/* ─── Hero ─── */
+.woweare-hero-section {
+  padding: 120px 0 60px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accent-text {
+  color: #006e80;
+}
+
+.woweare-hero-desc {
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+/* ─── História & Estatísticas ─── */
+.woweare-history-section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Estatísticas */
+.woweare-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.stat-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 30px;
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+}
+
+.stat-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--text-light);
+  box-shadow: var(--shadow-medium);
+}
+
+.stat-num {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ─── Missão, Visão e Valores ─── */
+.woweare-mvv-section {
+  padding: 80px 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.mvv-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: var(--transition-smooth);
+}
+
+.mvv-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-medium);
+}
+
+.mvv-icon {
+  color: var(--color-accent);
+}
+
+.mvv-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ─── Terminal de Compliance ─── */
+.woweare-compliance-section {
+  padding: 80px 0;
+}
+
+.compliance-header {
+  max-width: 800px;
+  margin-bottom: 50px;
+}
+
+.compliance-terminal-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Menu do Terminal */
+.terminal-menu {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.terminal-menu-header {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--bg-secondary);
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.terminal-menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.terminal-menu-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-light);
+}
+
+.terminal-menu-btn.active {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* Tela de Leitura do Terminal */
+.terminal-display {
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.terminal-display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--bg-secondary);
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.terminal-display-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.terminal-status-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  background-color: var(--bg-sage);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+}
+
+.terminal-display-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.terminal-checklist-box {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 24px;
+}
+
+.checklist-sub {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.terminal-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.terminal-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.check-success-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.check-text {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* ─── Responsividade ─── */
+@media (max-width: 1024px) {
+  .history-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .mvv-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .compliance-terminal-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .woweare-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .terminal-display {
+    padding: 24px;
+  }
+
+  .terminal-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}
