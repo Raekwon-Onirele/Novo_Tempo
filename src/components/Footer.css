@@ -16,6 +16,10 @@
   gap: 20px;
 }
 
+.logo-area .logo-nt {
+  margin-right: 4px;
+}
+
 .footer-brand-desc {
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -154,6 +158,11 @@
 .copyright-text {
   font-size: 0.8rem;
   color: var(--text-light);
+}
+
+.copyright-text a {
+  text-decoration: none;
+  color: #006e80;
 }
 
 .back-to-top-btn {

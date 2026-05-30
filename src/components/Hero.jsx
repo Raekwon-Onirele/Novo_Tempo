@@ -41,18 +41,21 @@ export default function Hero() {
             </p>
 
             <div className="hero-ctas">
-              <Link to="/contact">
-                <button className="btn-primary">
+              <Link to="/contact" onClick={() => handleLinkClick("#heroInicio")}>
+                <button
+                  className="btn-primary"
+                >
                   Fale com um Especialista <ArrowRight size={18} />
                 </button>
               </Link>
 
-              <button
-                onClick={() => scrollToSection("#orcamento")}
-                className="btn-secondary"
-              >
-                Simular Quantitativos
-              </button>
+              <Link to="/simulator" onClick={() => handleLinkClick("#heroInicio")}>
+                <button
+                  className="btn-secondary"
+                >
+                  Simular Quantitativos
+                </button>
+              </Link>
             </div>
           </div>
 

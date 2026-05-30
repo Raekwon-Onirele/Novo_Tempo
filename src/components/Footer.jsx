@@ -61,7 +61,7 @@ export default function Footer() {
           <div className="footer-col brand-col">
             <div className="logo-area">
               <span className="logo-nt">NOVO TEMPO</span>
-              <span className="logo-sub">ENGENHARIA ESTRUTURAL</span>
+              <span className="logo-sub">SOLUÇÕES EM ENGENHARIA</span>
             </div>
             <p className="footer-brand-desc text-para">
               Engenharia consultiva e estrutural de alta fidelidade técnica.
@@ -94,22 +94,46 @@ export default function Footer() {
           <div className="footer-col links-col">
             <h4 className="footer-col-title font-technical">Navegação</h4>
             <ul className="footer-links-list">
-              <Link to="/" className="links-text">
+              <Link
+                to="/"
+                className="links-text"
+                onClick={() => handleLinkClick("#heroInicio")}
+              >
                 <li>Início</li>
               </Link>
-              <Link to="/woweare" className="links-text">
+              <Link
+                to="/woweare"
+                className="links-text"
+                onClick={() => handleLinkClick("#heroInicio")}
+              >
                 <li>Quem Somos</li>
               </Link>
-              <Link to="/services" className="links-text">
+              <Link
+                to="/services"
+                className="links-text"
+                onClick={() => handleLinkClick("#heroInicio")}
+              >
                 <li>Serviços Integrados</li>
               </Link>
-              <Link to="/projects" className="links-text">
+              <Link
+                to="/projects"
+                className="links-text"
+                onClick={() => handleLinkClick("#heroInicio")}
+              >
                 <li>Projetos</li>
               </Link>
-              <Link to="/simulator" className="links-text">
+              <Link
+                to="/simulator"
+                className="links-text"
+                onClick={() => handleLinkClick("#heroInicio")}
+              >
                 <li>Simulador Quantitativo</li>
               </Link>
-              <Link to="/contact" className="links-text">
+              <Link
+                to="/contact"
+                className="links-text"
+                onClick={() => handleLinkClick("#heroInicio")}
+              >
                 <li>Contato Técnico</li>
               </Link>
             </ul>
@@ -171,8 +195,11 @@ export default function Footer() {
         {/* Row 2: Bottom Bar (Copyright) */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © {new Date().getFullYear()} Novo Tempo Engenharia Civil LTDA. Todos
-            os direitos reservados. CNPJ: 14.120.354/0001-08.
+            © {new Date().getFullYear()} Novo Tempo Soluções em Engenharia LTDA. Todos
+            os direitos reservados.
+          </p>
+          <p className="copyright-text">
+            Site feito por: <a href="https://github.com/Raekwon-Onirele">Raekwon Onirele</a>
           </p>
           <button
             onClick={scrollToTop}

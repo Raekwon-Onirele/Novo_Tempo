@@ -62,7 +62,7 @@
 .contact-crea-stamp {
   display: flex;
   gap: 16px;
-  background-color: #aeadb4a4;
+  background-color: #939393a4;
   border: 1px dashed #006e80;
   padding: 20px;
   border-radius: var(--border-radius-sm);

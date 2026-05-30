@@ -28,12 +28,15 @@
 }
 
 .partners-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
 .partner-card {
+  width: calc((100% - 100px) / 6);
+  width: 160px;
   background-color: var(--bg-card);
   border: 1px solid #005663;
   border-radius: var(--border-radius-sm);

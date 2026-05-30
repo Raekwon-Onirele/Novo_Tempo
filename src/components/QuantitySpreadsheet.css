@@ -84,7 +84,7 @@
   transition: var(--transition-fast);
 }
 
-.range-slider::-webkit-slider-thumb:hover {
+.input-group .range-slider::-webkit-slider-thumb:hover {
   background: #aeadb3;
   transform: scale(1.1);
 }
@@ -92,7 +92,7 @@
 .input-group .range-bounds {
   font-family: var(--font-technical);
   font-size: 0.7rem;
-  color: var(--color-accent-light);
+  color: #818184;
   text-align: right;
   margin-top: 2px;
 }

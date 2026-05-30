@@ -313,6 +313,24 @@
   line-height: 1.5;
 }
 
+.button-container {
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+}
+
+.btn-secondary {
+  padding: 12px 17px 12px 17px;
+  background-color: #0b0b0b;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
+  color: #0b0b0b;
+}
+
 /* Responsive CSS */
 @media (max-width: 1024px) {
   .portfolio-grid {
