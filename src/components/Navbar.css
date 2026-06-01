@@ -2,8 +2,9 @@
 .header-nav {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
+  left: 0;
+  right: 0;
   height: 80px;
   background-color: rgb(0, 110, 126);
   backdrop-filter: blur(8px);
@@ -260,7 +261,7 @@
 @media (max-width: 480px) {
 
   .header-nav {
-    height: 70px; 
+    height: 70px;
   }
 
   .drawer-content {

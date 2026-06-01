@@ -3,6 +3,9 @@
   background-color: var(--bg-primary);
   border-bottom: 1px solid var(--color-border);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; 
 }
 
 .hero-grid {

@@ -32,7 +32,7 @@ export default function Navbar() {
           <NavLink className="logo-container" to="/">
             <img
               className="logo-nt"
-              src="../../src/assets/LOGO NT icon branco.png"
+              src="/logo_icon_branco.png"
               alt="logo"
               onClick={() => handleLinkClick("#heroInicio")}
             />
