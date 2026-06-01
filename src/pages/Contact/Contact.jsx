@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Send, CheckCircle, Mail, Phone, Clock, FileText } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { EMAIL_CONFIG } from "../../config/emailConfig";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 // ============================================================
@@ -11,113 +11,29 @@ import "./Contact.css";
 // ============================================================
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    nome: "",
-    empresa: "",
-    email: "",
-    telefone: "",
-    departamentoId: EMAIL_CONFIG.DEPARTAMENTOS[0]?.id || "",
-    servico: "estrutural",
-    mensagem: "",
-  });
-
   const [loading, setLoading] = useState(false);
-  const [showSimulatedModal, setShowSimulatedModal] = useState(false);
-  const [simulatedPayload, setSimulatedPayload] = useState(null);
 
-  // Pré-selecionar serviço vindo de parâmetros de busca (query string)
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const serviceParam = params.get("servico");
-    if (serviceParam) {
-      // Mapear termos comuns dos serviços para as options do formulário
-      let mappedService = "estrutural";
-      if (
-        serviceParam.includes("viabilidade") ||
-        serviceParam.includes("pré-engenharia")
-      ) {
-        mappedService = "consultoria";
-      } else if (
-        serviceParam.includes("estruturais") ||
-        serviceParam.includes("fundações")
-      ) {
-        mappedService = "estrutural";
-      } else if (
-        serviceParam.includes("consultoria") ||
-        serviceParam.includes("auditoria")
-      ) {
-        mappedService = "consultoria";
-      } else if (
-        serviceParam.includes("bim") ||
-        serviceParam.includes("tecnologia")
-      ) {
-        mappedService = "consultoria";
-      } else if (serviceParam.includes("arquitetura")) {
-        mappedService = "estrutural";
-      } else if (serviceParam.includes("topografia")) {
-        mappedService = "consultoria";
-      }
+  const formRef = useRef();
+  const [status, setStatus] = useState("idle");
 
-      setFormData((prev) => ({
-        ...prev,
-        servico: mappedService,
-      }));
-    }
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setStatus("loading");
 
-    // ROTEAMENTO DINÂMICO DE E-MAIL
-    // Localiza o departamento selecionado no formulário dentro da lista de emailConfig.js
-    const selectedDept = EMAIL_CONFIG.DEPARTAMENTOS.find(
-      (dept) => dept.id === formData.departamentoId,
-    );
-
-    const destinationEmail = selectedDept
-      ? selectedDept.email
-      : EMAIL_CONFIG.EMAIL_PADRAO;
-    const departmentLabel = selectedDept ? selectedDept.label : "Geral";
-
-    setTimeout(() => {
-      // Simula o envio do e-mail montando o payload do evento
-      setSimulatedPayload({
-        destination: destinationEmail,
-        department: departmentLabel,
-        sentData: { ...formData },
-      });
-      setLoading(false);
-      setShowSimulatedModal(true);
-
-      // Limpa os campos do formulário
-      setFormData({
-        nome: "",
-        empresa: "",
-        email: "",
-        telefone: "",
-        departamentoId: EMAIL_CONFIG.DEPARTAMENTOS[0]?.id || "",
-        servico: "estrutural",
-        mensagem: "",
-      });
-    }, 1200); // Simula 1.2 segundos de resposta de rede
-  };
-
-  const scrollToSection = (selector) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+      setStatus("error");
     }
   };
-
   return (
     <div className="page-wrapper technical-grid-lines">
       <Navbar />
@@ -159,7 +75,7 @@ const Contact = () => {
                   <div>
                     <span className="info-card-title">E-mail Principal</span>
                     <span className="info-card-val font-technical">
-                      {EMAIL_CONFIG.EMAIL_PADRAO}
+                      projetos@novotempoengenharia.com.br
                     </span>
                   </div>
                 </div>
@@ -216,16 +132,18 @@ const Contact = () => {
                 imediato:
               </p>
 
-              <form onSubmit={handleSubmit} className="contact-actual-form">
+              <form
+                onSubmit={handleSubmit}
+                ref={formRef}
+                className="contact-actual-form"
+              >
                 <div className="contact-form-grid">
                   <div className="contact-field">
                     <label htmlFor="nome">Nome Completo</label>
                     <input
                       type="text"
                       id="nome"
-                      name="nome"
-                      value={formData.nome}
-                      onChange={handleChange}
+                      name="name"
                       placeholder="Ex: João da Silva"
                       required
                     />
@@ -236,9 +154,7 @@ const Contact = () => {
                     <input
                       type="text"
                       id="empresa"
-                      name="empresa"
-                      value={formData.empresa}
-                      onChange={handleChange}
+                      name="company"
                       placeholder="Ex: Construtora Real Ltda"
                       required
                     />
@@ -250,8 +166,6 @@ const Contact = () => {
                       type="email"
                       id="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       placeholder="Ex: joao@realcon.com.br"
                       required
                     />
@@ -262,9 +176,7 @@ const Contact = () => {
                     <input
                       type="tel"
                       id="telefone"
-                      name="telefone"
-                      value={formData.telefone}
-                      onChange={handleChange}
+                      name="phone"
                       placeholder="Ex: (11) 99999-9999"
                       required
                     />
@@ -276,17 +188,12 @@ const Contact = () => {
                     </label>
                     <select
                       id="departamentoId"
-                      name="departamentoId"
-                      value={formData.departamentoId}
-                      onChange={handleChange}
+                      name="sector"
                       className="contact-form-select"
                       required
                     >
-                      {EMAIL_CONFIG.DEPARTAMENTOS.map((dept) => (
-                        <option key={dept.id} value={dept.id}>
-                          {dept.label}
-                        </option>
-                      ))}
+                      <option value="Comercial">Comercial</option>
+                      <option value="Financeiro">Financeiro</option>
                     </select>
                   </div>
 
@@ -297,23 +204,22 @@ const Contact = () => {
                     <select
                       id="servico"
                       name="servico"
-                      value={formData.servico}
-                      onChange={handleChange}
+                      name="undertaking"
                       className="contact-form-select"
                     >
-                      <option value="estrutural">
+                      <option value="Projeto Estrutural de Edificações / Infraestrutura">
                         Projeto Estrutural de Edificações / Infraestrutura
                       </option>
-                      <option value="industrial">
+                      <option value="Industrial (Silos, Bases Pesadas, Papel & Celulose)">
                         Industrial (Silos, Bases Pesadas, Papel & Celulose)
                       </option>
-                      <option value="hospitalar">
+                      <option value="Rede Hospitalar (Saúde / Clínicas)">
                         Rede Hospitalar (Saúde / Clínicas)
                       </option>
-                      <option value="shopping">
+                      <option value="Shopping Center / Centros Comerciais">
                         Shopping Center / Centros Comerciais
                       </option>
-                      <option value="consultoria">
+                      <option value="Consultoria Técnica Independente / Auditoria BIM">
                         Consultoria Técnica Independente / Auditoria BIM
                       </option>
                     </select>
@@ -325,10 +231,8 @@ const Contact = () => {
                     </label>
                     <textarea
                       id="mensagem"
-                      name="mensagem"
+                      name="describe"
                       rows="4"
-                      value={formData.mensagem}
-                      onChange={handleChange}
                       placeholder="Descreva a área total estimada, quantidade de pavimentos, sondagem de solo (se conhecida) ou outras diretrizes do projeto."
                       required
                     ></textarea>
@@ -356,110 +260,20 @@ const Contact = () => {
                     </>
                   )}
                 </button>
+
+                {status === "success" && (
+                  <p style={{ color: "green" }}>Email enviado com sucesso!</p>
+                )}
+                {status === "error" && (
+                  <p style={{ color: "red" }}>
+                    Erro ao enviar. Tente novamente.
+                  </p>
+                )}
               </form>
             </div>
           </div>
         </section>
       </main>
-
-      {/* Modal de Simulação de Envio de Email */}
-      {showSimulatedModal && simulatedPayload && (
-        <div className="simulated-modal-overlay">
-          <div className="simulated-modal">
-            <div className="modal-header-sec">
-              <CheckCircle size={36} className="success-icon" />
-              <h3>Simulação de Disparo de E-mail</h3>
-            </div>
-
-            <div className="modal-body-sec">
-              <p className="modal-intro">
-                O formulário disparou o evento com sucesso. As informações foram
-                empacotadas e encaminhadas de acordo com a configuração de
-                e-mail selecionada:
-              </p>
-
-              <div className="payload-box">
-                <div className="payload-line">
-                  <span className="payload-label font-technical font-bold">
-                    DEPARTAMENTO ALVO:
-                  </span>
-                  <span className="payload-val">
-                    {simulatedPayload.department}
-                  </span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical font-bold">
-                    EMAIL DE DESTINO:
-                  </span>
-                  <span className="payload-val highlight font-technical">
-                    {simulatedPayload.destination}
-                  </span>
-                </div>
-                <div className="payload-divider"></div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">
-                    NOME CLIENTE:
-                  </span>
-                  <span className="payload-val">
-                    {simulatedPayload.sentData.nome}
-                  </span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">EMPRESA:</span>
-                  <span className="payload-val">
-                    {simulatedPayload.sentData.empresa}
-                  </span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">
-                    EMAIL CLIENTE:
-                  </span>
-                  <span className="payload-val">
-                    {simulatedPayload.sentData.email}
-                  </span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">
-                    TELEFONE:
-                  </span>
-                  <span className="payload-val">
-                    {simulatedPayload.sentData.telefone}
-                  </span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">
-                    SETOR PROJETO:
-                  </span>
-                  <span className="payload-val">
-                    {simulatedPayload.sentData.servico.toUpperCase()}
-                  </span>
-                </div>
-                <div className="payload-line scrollable-msg">
-                  <span className="payload-label font-technical">
-                    MENSAGEM:
-                  </span>
-                  <span className="payload-val">
-                    "{simulatedPayload.sentData.mensagem}"
-                  </span>
-                </div>
-              </div>
-
-              <p className="modal-helper-text">
-                Para alterar o email ou departamento acima, edite o arquivo{" "}
-                <code>src/config/emailConfig.js</code> no código.
-              </p>
-            </div>
-
-            <button
-              className="btn-primary modal-close-btn font-technical"
-              onClick={() => setShowSimulatedModal(false)}
-            >
-              Fechar Confirmação
-            </button>
-          </div>
-        </div>
-      )}
-
       <Footer />
     </div>
   );

@@ -1,68 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Send, CheckCircle, Mail, Phone, Clock, FileText } from 'lucide-react';
 // IMPORTANTE: A configuração de emails de destino está centralizada no arquivo abaixo!
 // Você pode alterar os emails e os departamentos no arquivo '/src/config/emailConfig.js' a qualquer momento.
-import { EMAIL_CONFIG } from '../config/emailConfig';
+import emailjs from '@emailjs/browser'
 import './ContactForm.css';
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    empresa: '',
-    email: '',
-    telefone: '',
-    departamentoId: EMAIL_CONFIG.DEPARTAMENTOS[0]?.id || '', // Inicia com o primeiro departamento da configuração
-    servico: 'estrutural',
-    mensagem: ''
-  });
 
   const [loading, setLoading] = useState(false);
-  const [showSimulatedModal, setShowSimulatedModal] = useState(false);
-  const [simulatedPayload, setSimulatedPayload] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const formRef = useRef()
+  const [status, setStatus] = useState('idle')
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('loading')
 
-    // DYNAMIC EMAIL ROUTING RESOLUTION
-    // Procuro o departamento selecionado pelo usuário dentro da lista configurada no 'emailConfig.js'
-    const selectedDept = EMAIL_CONFIG.DEPARTAMENTOS.find(
-      dept => dept.id === formData.departamentoId
-    );
-    
-    // Se o departamento for encontrado, pega seu email. Caso contrário, usa o email padrão.
-    const destinationEmail = selectedDept ? selectedDept.email : EMAIL_CONFIG.EMAIL_PADRAO;
-    const departmentLabel = selectedDept ? selectedDept.label : 'Geral';
-
-    setTimeout(() => {
-      // Simula o disparo de email montando o payload de envio
-      setSimulatedPayload({
-        destination: destinationEmail,
-        department: departmentLabel,
-        sentData: { ...formData }
-      });
-      setLoading(false);
-      setShowSimulatedModal(true);
-      
-      // Limpa formulário
-      setFormData({
-        nome: '',
-        empresa: '',
-        email: '',
-        telefone: '',
-        departamentoId: EMAIL_CONFIG.DEPARTAMENTOS[0]?.id || '',
-        servico: 'estrutural',
-        mensagem: ''
-      });
-    }, 1200); // 1.2 segundos de simulação de rede
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      setStatus('success')
+      formRef.current.reset()
+    } catch (error) {
+      console.error('Erro ao enviar:', error)
+      setStatus('error')
+    }
   };
 
   return (
@@ -83,7 +49,7 @@ export default function ContactForm() {
               <Mail className="detail-icon" size={20} />
               <div>
                 <span className="detail-title">Email de Contato</span>
-                <span className="detail-val font-technical">{EMAIL_CONFIG.EMAIL_PADRAO}</span>
+                <span className="detail-val font-technical">projetos@novotempoengenharia.com.br</span>
               </div>
             </div>
 
@@ -118,7 +84,7 @@ export default function ContactForm() {
           <h3 className="heading-card form-box-title">Formulário de Pré-Orçamento</h3>
           <p className="form-box-desc">Preencha as informações básicas para direcionamento imediato:</p>
 
-          <form onSubmit={handleSubmit} className="actual-form">
+          <form onSubmit={handleSubmit} ref={formRef} className="actual-form">
             <div className="form-grid">
               {/* Name */}
               <div className="form-field">
@@ -126,9 +92,7 @@ export default function ContactForm() {
                 <input 
                   type="text" 
                   id="nome" 
-                  name="nome"
-                  value={formData.nome}
-                  onChange={handleChange}
+                  name="name"
                   placeholder="Ex: João Silva" 
                   required 
                 />
@@ -140,9 +104,7 @@ export default function ContactForm() {
                 <input 
                   type="text" 
                   id="empresa" 
-                  name="empresa"
-                  value={formData.empresa}
-                  onChange={handleChange}
+                  name="company"
                   placeholder="Ex: Construtora Real" 
                   required 
                 />
@@ -155,8 +117,6 @@ export default function ContactForm() {
                   type="email" 
                   id="email" 
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
                   placeholder="Ex: joao@empresa.com" 
                   required 
                 />
@@ -168,9 +128,7 @@ export default function ContactForm() {
                 <input 
                   type="tel" 
                   id="telefone" 
-                  name="telefone"
-                  value={formData.telefone}
-                  onChange={handleChange}
+                  name="phone"
                   placeholder="Ex: (11) 99999-9999" 
                   required 
                 />
@@ -182,17 +140,11 @@ export default function ContactForm() {
                 <label htmlFor="departamentoId">Área de Destino (Direcionamento de E-mail)</label>
                 <select 
                   id="departamentoId" 
-                  name="departamentoId"
-                  value={formData.departamentoId}
-                  onChange={handleChange}
+                  name="sector"
                   className="form-select"
-                  required
                 >
-                  {EMAIL_CONFIG.DEPARTAMENTOS.map(dept => (
-                    <option key={dept.id} value={dept.id}>
-                      {dept.label}
-                    </option>
-                  ))}
+                  <option value="Comercial">Comercial</option>
+                  <option value="Financeiro">Financeiro</option>
                 </select>
               </div>
 
@@ -201,16 +153,14 @@ export default function ContactForm() {
                 <label htmlFor="servico">Setor / Tipo de Empreendimento</label>
                 <select 
                   id="servico" 
-                  name="servico"
-                  value={formData.servico}
-                  onChange={handleChange}
+                  name="undertaking"
                   className="form-select"
                 >
-                  <option value="industrial">Industrial (Galpão, Silo, Bases Pesadas)</option>
-                  <option value="hospitalar">Rede de Saúde (Hospital, Clínicas)</option>
-                  <option value="shopping">Shopping Center / Centro Comercial</option>
-                  <option value="estrutural">Projeto Estrutural de Edifício</option>
-                  <option value="consultoria">Consultoria Técnica / Auditoria de Projetos</option>
+                  <option value="Industrial (Galpão, Silo, Bases Pesadas)">Industrial (Galpão, Silo, Bases Pesadas)</option>
+                  <option value="Rede de Saúde (Hospital, Clínicas)">Rede de Saúde (Hospital, Clínicas)</option>
+                  <option value="Shopping Center / Centro Comercial">Shopping Center / Centro Comercial</option>
+                  <option value="Projeto Estrutural de Edifício">Projeto Estrutural de Edifício</option>
+                  <option value="Consultoria Técnica / Auditoria de Projetos">Consultoria Técnica / Auditoria de Projetos</option>
                 </select>
               </div>
 
@@ -219,10 +169,8 @@ export default function ContactForm() {
                 <label htmlFor="mensagem">Resumo do Escopo / Mensagem</label>
                 <textarea 
                   id="mensagem" 
-                  name="mensagem"
+                  name="describe"
                   rows="4"
-                  value={formData.mensagem}
-                  onChange={handleChange}
                   placeholder="Descreva as dimensões aproximadas, tipo de solo (se conhecido) ou escopo da consultoria estrutural." 
                   required
                 ></textarea>
@@ -240,73 +188,13 @@ export default function ContactForm() {
                 </>
               )}
             </button>
+
+            {status === 'success' && <p style={{ color: 'green' }}>Email enviado com sucesso!</p>}
+            {status === 'error'   && <p style={{ color: 'red'  }}>Erro ao enviar. Tente novamente.</p>}
           </form>
         </div>
 
       </div>
-
-      {/* Dynamic Simulated Email Shipment Modal */}
-      {showSimulatedModal && simulatedPayload && (
-        <div className="simulated-modal-overlay">
-          <div className="simulated-modal">
-            <div className="modal-header-sec">
-              <CheckCircle size={36} className="success-icon" />
-              <h3>Simulação de Disparo de E-mail</h3>
-            </div>
-            
-            <div className="modal-body-sec">
-              <p className="modal-intro">
-                O formulário disparou o evento com sucesso. As informações foram empacotadas 
-                e encaminhadas de acordo com a configuração de e-mail selecionada:
-              </p>
-              
-              <div className="payload-box">
-                <div className="payload-line">
-                  <span className="payload-label font-technical font-bold">DEPARTAMENTO ALVO:</span>
-                  <span className="payload-val">{simulatedPayload.department}</span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical font-bold">EMAIL DE DESTINO:</span>
-                  <span className="payload-val highlight font-technical">{simulatedPayload.destination}</span>
-                </div>
-                <div className="payload-divider"></div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">NOME CLIENTE:</span>
-                  <span className="payload-val">{simulatedPayload.sentData.nome}</span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">EMPRESA:</span>
-                  <span className="payload-val">{simulatedPayload.sentData.empresa}</span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">EMAIL CLIENTE:</span>
-                  <span className="payload-val">{simulatedPayload.sentData.email}</span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">TELEFONE:</span>
-                  <span className="payload-val">{simulatedPayload.sentData.telefone}</span>
-                </div>
-                <div className="payload-line">
-                  <span className="payload-label font-technical">SETOR PROJETO:</span>
-                  <span className="payload-val">{simulatedPayload.sentData.servico.toUpperCase()}</span>
-                </div>
-                <div className="payload-line scrollable-msg">
-                  <span className="payload-label font-technical">MENSAGEM:</span>
-                  <span className="payload-val">"{simulatedPayload.sentData.mensagem}"</span>
-                </div>
-              </div>
-
-              <p className="modal-helper-text">
-                Para alterar o email ou departamento acima, edite o arquivo <code>src/config/emailConfig.js</code> no código.
-              </p>
-            </div>
-            
-            <button className="btn-primary modal-close-btn" onClick={() => setShowSimulatedModal(false)}>
-              Fechar Confirmação
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
