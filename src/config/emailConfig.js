@@ -34,7 +34,7 @@ export const EMAIL_CONFIG = {
   ],
 
   // Email padrão usado como fallback (caso algo dê errado na seleção)
-  EMAIL_PADRAO: 'contato@novotempoengenharia.com.br',
+  EMAIL_PADRAO: 'projetos@novotempoengenharia.com.br',
 
   // Configurações do simulador de envio (exibidas no console ou popup para teste manual)
   SIMULAR_ENVIO: true // Se true, exibe um log no console e modal de simulação com os detalhes do email disparado.

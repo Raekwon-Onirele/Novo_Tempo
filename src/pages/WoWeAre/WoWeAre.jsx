@@ -72,6 +72,18 @@ const WoWeAre = () => {
         "Mitigação completa de risco financeiro para a incorporadora contratante.",
       ],
     },
+    certificados: {
+      title: "Nossos Certificados",
+      status: "CERTIFICADO",
+      badgeClass: "status-success",
+      desc: "Aqui estão alguns de nossos certificados:",
+      items: [
+        "CERTIFICADO PRIME 2025",
+        "CERTIFICADO QUALIDADE ANCEC 2025",
+        "CERTIFICADO Brasil 2021",
+        "CERTIFICADO CHAMPION 2024",
+      ],
+    },
   };
 
   const scrollToSection = (selector) => {
@@ -104,6 +116,15 @@ const WoWeAre = () => {
               dia mais exigente, porém sem perder a tradição e disciplina
               conquistada ao longo de toda sua existência.
             </p>
+            <p className="text-para woweare-hero-desc">
+              Para isso, contamos com uma equipe de profissionais qualificados e
+              de alta qualidade, em constante evolução, capacitados a operar
+              produtos e softwares de última geração disponíveis no mercado.
+              Conheça mais um pouco da nossa história em:{" "}
+              <a href="https://youtu.be/NGetINT3L7M" className="link-text">
+                https://youtu.be/NGetINT3L7M
+              </a>
+            </p>
           </div>
         </section>
 
@@ -113,22 +134,20 @@ const WoWeAre = () => {
             <div className="history-grid">
               <div className="history-content">
                 <h2 className="heading-section">
-                  De Grandes Indústrias à Engenharia Multissetorial
+                  Somos uma empresa especializada em Projetos de Engenharia
+                  Civil
                 </h2>
-                <p className="text-para">
-                  Nossa história é marcada pela superação técnica. A atuação em
-                  projetos estruturais de grande porte, como a base do
-                  turbogerador e silos para a fábrica da <strong>KLABIN</strong>{" "}
-                  em Ortigueira, nos deu a musculatura necessária para atuar de
-                  forma robusta em qualquer segmento civil.
-                </p>
-                <p className="text-para" style={{ marginTop: "16px" }}>
-                  Superamos a dependência de nicho para levar o rigor de cálculo
-                  industrial a hospitais, shopping centers e torres
-                  corporativas. Entendemos as dores do mercado B2B: prazos
-                  apertados, incompatibilidade geométrica de projetos em obra e
-                  desperdício de insumos. Respondemos a isso com engenharia de
-                  valor de ponta a ponta.
+                <p className="text-para text-history">
+                  Com ênfase em indústrias e estruturas de grande porte em
+                  geral, incluindo as principais disciplinas de CIVIL, como
+                  implantação, arquitetura, fundações, estruturas de concreto
+                  armado in bloco e pré-moldado, instalações hidrossanitárias e
+                  estruturas metálicas, com habilitação para participar das
+                  diversas fases de um empreendimento a partir da etapa de FEL 2
+                  até FEL 4. Também atuamos na área de gerenciamento e
+                  planejamento, pré engenharia, take off e elaboração de
+                  Inquiry. Trabalhamos em BIM LOD 300, e desenvolvemos ATP nos
+                  moldes da NBR 6118.
                 </p>
               </div>
 
@@ -169,9 +188,9 @@ const WoWeAre = () => {
                 <Target size={32} className="mvv-icon" />
                 <h3 className="heading-card">Nossa Missão</h3>
                 <p className="text-para mvv-desc">
-                  Projetar estruturas seguras, eficientes e inteligentes que
-                  viabilizem grandes empreendimentos, otimizando custos por meio
-                  de rigor técnico e tecnologia BIM avançada.
+                  Oferecer soluções e projetos de Engenharia Civil, buscando o
+                  melhor desempenho e melhor custo para proporcionar os melhores
+                  resultados
                 </p>
               </div>
 
@@ -179,9 +198,9 @@ const WoWeAre = () => {
                 <Eye size={32} className="mvv-icon" />
                 <h3 className="heading-card">Nossa Visão</h3>
                 <p className="text-para mvv-desc">
-                  Ser reconhecida no mercado de engenharia B2B como referência
-                  em projetos de alta complexidade, destacando-se pela precisão,
-                  segurança técnica e transparência.
+                  Ser reconhecida no meio técnico como uma empresa de projetos
+                  que melhor atende as necessidades e expectativas dos nossos
+                  clientes
                 </p>
               </div>
 
@@ -189,9 +208,9 @@ const WoWeAre = () => {
                 <Shield size={32} className="mvv-icon" />
                 <h3 className="heading-card">Nossos Valores</h3>
                 <p className="text-para mvv-desc">
-                  Prezamos pela segurança absoluta da vida humana, conformidade
-                  normativa inegociável, inovação digital contínua e a
-                  transparência em todos os nossos canais.
+                  Ética, respeito, sustentabilidade, inovação, eficiência,
+                  qualidade e tradição com modernidade. Sob todas as
+                  circunstâncias, gratidão a <strong>Deus</strong>
                 </p>
               </div>
             </div>
@@ -248,6 +267,13 @@ const WoWeAre = () => {
                 >
                   <Shield size={14} /> Seguro Técnico Civil
                 </button>
+
+                <button
+                  className={`terminal-menu-btn font-technical ${selectedCheck === "certificados" ? "active" : ""}`}
+                  onClick={() => setSelectedCheck("certificados")}
+                >
+                  <Shield size={14} /> Certificados
+                </button>
               </div>
 
               {/* Display de Detalhes da Verificação */}
@@ -268,9 +294,6 @@ const WoWeAre = () => {
                 </p>
 
                 <div className="terminal-checklist-box">
-                  <span className="checklist-sub font-technical">
-                    Parâmetros Validados Internamente
-                  </span>
                   <div className="terminal-checklist-grid">
                     {technicalChecks[selectedCheck].items.map((item, idx) => (
                       <div key={idx} className="terminal-check-item">

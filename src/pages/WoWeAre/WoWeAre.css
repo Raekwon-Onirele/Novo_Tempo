@@ -21,6 +21,10 @@
   margin-top: 20px;
 }
 
+.woweare-hero-desc .link-text {
+  color:#636363 ;
+}
+
 /* ─── História & Estatísticas ─── */
 .woweare-history-section {
   padding: 80px 0;
@@ -32,6 +36,10 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: 60px;
   align-items: center;
+}
+
+.text-history {
+  margin-top: 10px;
 }
 
 /* Estatísticas */

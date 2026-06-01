@@ -178,15 +178,29 @@ export default function Footer() {
             <h4 className="footer-col-title font-technical">Contato Direto</h4>
             <ul className="footer-contact-info">
               <li>
-                <Phone size={14} className="contact-li-icon" /> (11) 4502-3920
+                <div className="phones-contact">
+                  <p>
+                    <Phone size={14} className="contact-li-icon" /> +55 (11)
+                    3214-2918
+                  </p>
+                  <p>
+                    <Phone size={14} className="contact-li-icon" /> +55 (11)
+                    99261-2500
+                  </p>
+                  <p>
+                    <Phone size={14} className="contact-li-icon" /> +55 (11)
+                    99266-5955
+                  </p>
+                </div>
               </li>
               <li>
                 <Mail size={14} className="contact-li-icon" />{" "}
-                contato@novotempoeng.com.br
+                projetos@novotempoengenharia.com.br
               </li>
               <li>
-                <MapPin size={14} className="contact-li-icon" /> Av. Paulista,
-                1000, 14º Andar - Bela Vista, São Paulo - SP
+                <MapPin size={14} className="contact-li-icon" /> Av. Hilário
+                Pereira de Souza, 406 Torre Osasco - Salas 1111 a 1113 CEP
+                06010-170 - Osasco - SP
               </li>
             </ul>
           </div>
@@ -195,11 +209,12 @@ export default function Footer() {
         {/* Row 2: Bottom Bar (Copyright) */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © {new Date().getFullYear()} Novo Tempo Soluções em Engenharia LTDA. Todos
-            os direitos reservados.
+            © {new Date().getFullYear()} Novo Tempo Soluções em Engenharia LTDA.
+            Todos os direitos reservados.
           </p>
           <p className="copyright-text">
-            Site feito por: <a href="https://github.com/Raekwon-Onirele">Raekwon Onirele</a>
+            Site feito por:{" "}
+            <a href="https://github.com/Raekwon-Onirele">Raekwon Onirele</a>
           </p>
           <button
             onClick={scrollToTop}
