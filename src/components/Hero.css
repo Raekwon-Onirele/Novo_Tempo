@@ -23,7 +23,7 @@
 
 .heading-huge {
   margin-bottom: 20px;
-  width: 630px;
+  max-width: 630px;
 }
 
 .heading-huge span {

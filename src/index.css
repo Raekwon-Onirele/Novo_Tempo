@@ -229,32 +229,6 @@ button, input, select, textarea {
   background-color: var(--color-border);
 }
 
-.technical-grid-lines {
-  position: relative;
-}
-
-.technical-grid-lines::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  width: 1px;
-  height: 100%;
-  background-color: rgba(220, 217, 206, 0.25);
-  pointer-events: none;
-}
-
-.technical-grid-lines::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 10%;
-  width: 1px;
-  height: 100%;
-  background-color: rgba(220, 217, 206, 0.25);
-  pointer-events: none;
-}
-
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(15px); }

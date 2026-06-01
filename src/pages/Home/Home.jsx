@@ -14,7 +14,7 @@ import Footer from '../../components/Footer';
 
 const Home = () => {
   return (
-    <div className="app-landing-page technical-grid-lines">
+    <div className="app-landing-page">
           {/* 1. Barra de Navegação com Menu Hambúrguer (Sanduíche) */}
           <Navbar />
     

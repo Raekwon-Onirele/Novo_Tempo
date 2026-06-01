@@ -94,7 +94,7 @@ const Simulator = () => {
   };
 
   return (
-    <div className="page-wrapper technical-grid-lines">
+    <div className="page-wrapper">
       <Navbar />
 
       <main className="simulator-main" id="heroInicio">

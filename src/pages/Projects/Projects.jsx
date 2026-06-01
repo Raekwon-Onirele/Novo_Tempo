@@ -155,7 +155,7 @@ const Projects = () => {
       : projects.filter((p) => p.sector === activeFilter);
 
   return (
-    <div className="page-wrapper technical-grid-lines">
+    <div className="page-wrapper">
       <Navbar />
 
       <main className="projects-main" id="heroInicio">
