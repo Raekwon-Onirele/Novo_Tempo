@@ -97,7 +97,6 @@ button, input, select, textarea {
 .app-landing-page {
   width: 100%;
   overflow-x: hidden;
-  max-width: 100vw;
 }
 
 .technical-tag {

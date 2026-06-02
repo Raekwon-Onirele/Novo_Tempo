@@ -26,7 +26,7 @@ export default function Hero() {
             </div>
 
             <h1 className="heading-huge hero-title">
-              Engenharia <span>Completa</span> Do Conceito da ObraCompleta.
+              Engenharia <span>Completa</span> Do Conceito da Obra Completa.
             </h1>
 
             <p className="text-para hero-desc">
