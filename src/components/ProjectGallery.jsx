@@ -10,9 +10,9 @@ export default function ProjectGallery() {
     {
       id: 1,
       title: "Hospital Regional Metropolitano",
-      sector: "Saúde / Rede Hospitalar",
+      sector: "Industrial",
       location: "São Paulo - SP",
-      image: "/project_hospital.png",
+      image: "/project_1.jpg",
       desc: "Projeto completo de fundações e superestrutura para complexo hospitalar de alta complexidade com isolamento sísmico de base.",
       stats: {
         area: "45.000 m²",
@@ -29,7 +29,7 @@ export default function ProjectGallery() {
       title: "Shopping Center Parque das Avenidas",
       sector: "Comercial / Varejo de Grande Porte",
       location: "Campinas - SP",
-      image: "/project_shopping.png",
+      image: "/project_3.png",
       desc: "Estrutura mista de concreto protendido e cobertura metálica espacial de grandes vãos livres para praça de alimentação e claraboia central.",
       stats: {
         area: "82.000 m²",
@@ -46,7 +46,7 @@ export default function ProjectGallery() {
       title: "Planta Industrial de Papel e Celulose (Klabin)",
       sector: "Industrial / Infraestrutura Pesada",
       location: "Ortigueira - PR",
-      image: "/project_industrial.png",
+      image: "/project_2.jpg",
       desc: "Projeto estrutural para bases de máquinas de grande vibração, silos de estocagem de cavacos e pontes rolantes de alta tonelagem.",
       stats: {
         area: "120.000 m²",

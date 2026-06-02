@@ -62,7 +62,7 @@ export default function Hero() {
           <div className="hero-visual">
             <div className="visual-frame">
               <img
-                src="/hero_project.png"
+                src="/hero_project.jpg"
                 alt="Novo Tempo Engenharia - Projeto de Alta Complexidade"
                 className="hero-image"
               />

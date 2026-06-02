@@ -4,6 +4,9 @@
 
 .contact-page-main {
   padding-bottom: 100px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* ─── Hero ─── */
@@ -90,14 +93,14 @@
 .crea-compliance-badge {
   display: flex;
   gap: 16px;
-  background-color: var(--bg-sage);
+  background-color: #006f8036;
   border: 1px dashed var(--color-accent);
   padding: 20px;
   border-radius: var(--border-radius-sm);
 }
 
 .compliance-icon {
-  color: var(--color-accent);
+  color: #636363;
   flex-shrink: 0;
 }
 
@@ -105,7 +108,7 @@
   display: block;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: #636363;
   margin-bottom: 4px;
 }
 
@@ -356,6 +359,39 @@
   .contact-page-container {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero-section {
+    padding: 100px 0 40px 0;
+  }
+ 
+  .contact-form-section {
+    padding: 40px 0;
+  }
+ 
+  .contact-page-form-panel {
+    padding: 24px 16px;
+  }
+ 
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+ 
+  .contact-field.span-2 {
+    grid-column: span 1;
+  }
+ 
+  .contact-info-card {
+    padding: 16px;
+    align-items: flex-start;
+  }
+ 
+  .info-card-val {
+    font-size: 0.85rem;
+    word-break: break-word;
   }
 }
 

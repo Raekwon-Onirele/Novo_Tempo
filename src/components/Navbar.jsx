@@ -91,7 +91,7 @@ export default function Navbar() {
                 onClick={() => handleLinkClick("#heroInicio")}
               >
                 <span className="nav-num">03.</span>
-                <span className="nav-label">Serviços Integrados</span>
+                <span className="nav-label">Nossos Serviços</span>
                 <ChevronRight className="nav-arrow" size={18} />
               </div>
             </NavLink>

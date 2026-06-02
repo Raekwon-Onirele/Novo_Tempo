@@ -19,7 +19,7 @@
 }
 
 .sim-hero-title .accent-text {
-  color: var(--color-accent);
+  color: #006e80;
 }
 
 .sim-hero-desc {
@@ -40,8 +40,8 @@
   font-family: var(--font-technical);
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-accent);
-  background-color: var(--bg-sage);
+  color: #636363;
+  background-color: rgb(216, 218, 222);
   border: 1px solid var(--color-border);
   padding: 6px 14px;
   border-radius: var(--border-radius-sm);

@@ -69,7 +69,7 @@
   display: block;
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--color-accent);
+  color: #006e80;
   line-height: 1.1;
   margin-bottom: 8px;
 }
@@ -114,7 +114,7 @@
 }
 
 .mvv-icon {
-  color: var(--color-accent);
+  color: #006e80;
 }
 
 .mvv-desc {
@@ -224,8 +224,8 @@
   padding: 4px 10px;
   border-radius: 12px;
   font-weight: 700;
-  background-color: var(--bg-sage);
-  color: var(--color-accent);
+  background-color: rgb(216, 218, 222);
+  color: #006e80;
   border: 1px solid var(--color-border);
 }
 

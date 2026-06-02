@@ -28,11 +28,11 @@ const Projects = () => {
     {
       id: 1,
       title: "Hospital Regional Metropolitano",
-      sector: "hospitalar",
-      sectorLabel: "Saúde / Rede Hospitalar",
+      sector: "industrial",
+      sectorLabel: "Industrial",
       location: "São Paulo — SP",
       year: "2022",
-      image: "/project_hospital.png",
+      image: "/project_1.jpg",
       desc: "Projeto completo de fundações e superestrutura para complexo hospitalar de alta complexidade com isolamento sísmico de base e compatibilização multidisciplinar.",
       stats: {
         area: "45.000 m²",
@@ -51,7 +51,7 @@ const Projects = () => {
       sectorLabel: "Comercial / Varejo de Grande Porte",
       location: "Campinas — SP",
       year: "2021",
-      image: "/project_shopping.png",
+      image: "/project_3.png",
       desc: "Estrutura mista de concreto protendido e cobertura metálica espacial de grandes vãos livres para praça de alimentação e claraboia central.",
       stats: {
         area: "82.000 m²",
@@ -70,7 +70,7 @@ const Projects = () => {
       sectorLabel: "Industrial / Infraestrutura Pesada",
       location: "Ortigueira — PR",
       year: "2019",
-      image: "/project_industrial.png",
+      image: "/project_2.jpg",
       desc: "Projeto estrutural para bases de máquinas de grande vibração, silos de estocagem de cavacos e pontes rolantes de alta tonelagem.",
       stats: {
         area: "120.000 m²",
@@ -89,7 +89,7 @@ const Projects = () => {
       sectorLabel: "Corporativo / Edifícios de Escritórios",
       location: "Barueri — SP",
       year: "2023",
-      image: "/project_hospital.png",
+      image: "/project_2.jpg",
       desc: "Estrutura de concreto armado de 22 pavimentos com núcleo rígido central, lajes protendidas e sistema de contenção periférica em solo mole.",
       stats: {
         area: "28.000 m²",
@@ -108,7 +108,7 @@ const Projects = () => {
       sectorLabel: "Industrial / Logística e Infraestrutura",
       location: "Rondonópolis — MT",
       year: "2022",
-      image: "/project_industrial.png",
+      image: "/project_3.png",
       desc: "Galpão logístico modular de 80.000 m² com mezaninos metálicos, docas de alto fluxo e bases para sistemas AGV automatizados.",
       stats: {
         area: "80.000 m²",
@@ -127,7 +127,7 @@ const Projects = () => {
       sectorLabel: "Saúde / Expansão de Complexo Hospitalar",
       location: "Rio de Janeiro — RJ",
       year: "2023",
-      image: "/project_hospital.png",
+      image: "/project_1.jpg",
       desc: "Projeto de reforço estrutural e ampliação vertical de bloco hospitalar existente em operação, com execução em etapas sem interrupção de atendimento.",
       stats: {
         area: "18.000 m²",
